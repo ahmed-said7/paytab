@@ -1,7 +1,7 @@
 import { HttpException, Injectable } from "@nestjs/common";
 import mongoose, { Model, Query } from "mongoose";
-import { mongodbId } from "src/chat/chat.service";
 import { apiFeatures, g } from "./api.service";
+import { mongodbId } from "src/payment gateway/paytab.service";
 
 export type Opts= {path:string; select:string}[] | {path:string; select:string};
 

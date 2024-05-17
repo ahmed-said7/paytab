@@ -1,16 +1,15 @@
 import { HttpException, Injectable } from "@nestjs/common";
 import { CreatePaytabUrlDto } from "./dto/create.url.dto";
-import { mongodbId } from "src/chat/chat.service";
 import { UserDoc } from "src/schema.factory/user.schema";
 import { InjectModel } from "@nestjs/mongoose";
 import { Models } from "src/enums/models";
-import { Model } from "mongoose";
+import mongoose, { Model } from "mongoose";
 import { OfferDoc  } from "src/schema.factory/offer.schema";
 import { RequestDoc } from "src/schema.factory/request.schema";
 import { Paytab } from "./paytabs";
 import { Request, Response } from "express";
 import { OnEvent } from "@nestjs/event-emitter";
-
+export type mongodbId=mongoose.Schema.Types.ObjectId;
 @Injectable()
 export class PaytabService {
     constructor(
@@ -18,7 +17,8 @@ export class PaytabService {
         @InjectModel(Models.Request) private reqModel:Model<RequestDoc>,
         private paytab:Paytab
     ){}
-    async getPaytabUrl(res:Response, body:CreatePaytabUrlDto,offerId:mongodbId,user:UserDoc ){
+    async getPaytabUrl(res:Response, body:CreatePaytabUrlDto
+        ,offerId:mongodbId,user:UserDoc ){
         const offer=await this.offerModel.findById(offerId);
         if( !offer ){
             throw new HttpException("offer not found",400);
@@ -41,8 +41,8 @@ export class PaytabService {
     async validateCallback(req:Request){
         this.paytab.ValidatePayment(req);
     };
-    // @OnEvent("payment.created")
-    // private async paymentCreated(data){
-    //     console.log(data);
-    // };
+    @OnEvent("payment.created")
+    private async paymentCreated(data){
+        console.log(data);
+    };
 };

@@ -1,10 +1,13 @@
-import { HttpException, Injectable } from "@nestjs/common";
+import {  Injectable } from "@nestjs/common";
 import { Request, Response } from "express";
+// @ts-ignore
 import * as paytabs from "paytabs_pt2";
-import { mongodbId } from "src/chat/chat.service";
+
+
 import { UserDoc } from "src/schema.factory/user.schema";
 import axios  from "axios";
 import { EventEmitter2 } from "@nestjs/event-emitter";
+import { mongodbId } from "./paytab.service";
 interface metadata {
     phone: string;
     street: string;

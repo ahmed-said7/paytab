@@ -6,8 +6,7 @@ import { Roles } from "src/decorator/metadata";
 import { UserDoc } from "src/schema.factory/user.schema";
 import { AuthUser } from "src/decorator/current.user";
 import { ParseMongoId } from "src/pipes/validate.mogoid";
-import { mongodbId } from "src/chat/chat.service";
-import { PaytabService } from "./paytab.service";
+import { PaytabService, mongodbId } from "./paytab.service";
 import { CreatePaytabUrlDto } from "./dto/create.url.dto";
 import { Request, Response } from "express";
 

@@ -1,5 +1,5 @@
 import { IsMobilePhone, IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { mongodbId } from "src/chat/chat.service";
+import { mongodbId } from "../paytab.service";
 export class CreatePaytabUrlDto {
     @IsNotEmpty()
     @IsMobilePhone()

@@ -1,9 +1,8 @@
 import { Schema,Document, Query } from "mongoose";
 import * as bcryptjs from "bcryptjs";
-import { mongodbId } from "src/chat/chat.service";
 import { Injectable } from "@nestjs/common";
 import { Models } from "src/enums/models";
-import { BrandDoc } from "./car.brand.schema";
+import { mongodbId } from "src/payment gateway/paytab.service";
 
 
 @Injectable()
@@ -36,7 +35,6 @@ export class UserSchema {
             type:String,
             enum:["new","used"]
         },
-        tradingBrand:[{ type:Schema.Types.ObjectId,ref:Models.Brand }],
         ratingQuantity:{type:Number,default:0},
         averageRating:{type:Number,default:0},
         passwordChangedAt:Date,
@@ -92,6 +90,5 @@ export interface UserDoc extends Document {
         street:string;
         mobile:string;
     }[];
-    tradingBrand:BrandDoc[];
     allowTrading:boolean;
 };

@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Schema , Document } from "mongoose";
-import { mongodbId } from "src/chat/chat.service";
 import { Models } from "src/enums/models";
+import { mongodbId } from "src/payment gateway/paytab.service";
 
 @Injectable()
 export class RequestSchema {
